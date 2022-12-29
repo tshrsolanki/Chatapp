@@ -1,0 +1,89 @@
+html,
+body {
+  font-family: "Roboto", sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+#root {
+  height: 100vh;
+}
+.joinButton {
+  background-color: rgb(181, 245, 179);
+  width: 100%;
+  color: rgb(5, 5, 5);
+  height: 50px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.createJoinOuterContainer {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  align-items: center;
+  background-color: #1a1a1d;
+}
+
+.createJoinInnerContainer {
+  width: 30%;
+}
+.modal {
+  margin-top: 300px;
+}
+
+.joinInput {
+  border: 3px solid gray;
+  border-radius: 4px;
+  height: 45px;
+  padding: 0px 10px;
+  width: 100%;
+}
+
+.heading {
+  color: white;
+  font-size: 2.5em;
+  padding-bottom: 10px;
+  border-bottom: 2px solid white;
+}
+.createJoinMsg {
+  margin-top: 2px;
+  font-size: large;
+  color: red;
+  text-transform: capitalize;
+  text-align: center;
+}
+.button {
+  color: #fff !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #2979ff;
+  padding: 20px;
+  border-radius: 5px;
+  display: inline-block;
+  border: none;
+  width: 100%;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .joinOuterContainer {
+    height: 100%;
+  }
+
+  .joinInnerContainer {
+    width: 90%;
+  }
+}
+
+button:focus {
+  outline: 0;
+}

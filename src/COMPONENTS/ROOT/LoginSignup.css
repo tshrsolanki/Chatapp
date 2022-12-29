@@ -1,0 +1,21 @@
+.main {
+  display: flex;
+  justify-content: center;
+}
+.innerContainerGreen {
+  box-shadow: 3px 3px 100px 2px rgb(69, 189, 32);
+  border: 50px gray;
+  border-radius: 20px;
+  margin-top: 20vh;
+  padding: 5px;
+  width: 27%;
+}
+
+.innerContainerBlue {
+  box-shadow: 3px 3px 100px 2px rgb(33, 81, 143);
+  border: 50px gray;
+  border-radius: 20px;
+  margin-top: 20vh;
+  padding: 5px;
+  width: 27%;
+}

@@ -5,20 +5,40 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useContext } from "react";
 import { context } from "../../Context";
+import { toast } from "react-toastify";
 
 export const Login = () => {
-  const [email, setemail] = useState("");
-  const [password, setpassword] = useState("");
+  const [email, setemail] = useState("test@mail");
+  const [password, setpassword] = useState("123");
   const navigate = useNavigate();
-  const { setuser } = useContext(context);
+  const { setuser, url } = useContext(context);
+  console.log(url);
   const login = async () => {
-    const { data } = await axios.post("http://localhost:5000/login", {
-      email,
-      password,
-    });
-    if (data.success) {
-      setuser(data.user);
-      navigate("/join");
+    try {
+      const { data } = await axios.post(`${url}/login`, {
+        email,
+        password,
+      });
+      if (data.success) {
+        localStorage.setItem("token", data.user.token);
+        setuser(data.user);
+        navigate("/join");
+        return;
+      } else {
+        toast.error(data.message, {
+          theme: "colored",
+          autoClose: 3000,
+          hideProgressBar: true,
+          position: "bottom-center",
+        });
+        return;
+      }
+    } catch (error) {
+      toast.error("Something went wrong", {
+        theme: "colored",
+        hideProgressBar: true,
+        autoClose: 3000,
+      });
     }
   };
   return (

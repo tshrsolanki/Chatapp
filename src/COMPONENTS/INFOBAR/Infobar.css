@@ -7,7 +7,26 @@
   height: 60px;
   width: 100%;
 }
-
+.room-title {
+  background-color: gray;
+  padding: 5px;
+  border-radius: 10px;
+  color: aliceblue;
+  border-radius: 10px;
+}
+.room-username {
+  background-color: gray;
+  padding: 5px;
+  border-radius: 10px;
+  color: aliceblue;
+  border-radius: 10px;
+}
+.roommembers-length {
+  background-color: gray;
+  color: aliceblue;
+  padding: 5px;
+  border-radius: 10px;
+}
 .leftInnerContainer {
   flex: 0.5;
   display: flex;
@@ -18,8 +37,10 @@
 
 .rightInnerContainer {
   display: flex;
+  color: white;
   flex: 0.5;
   justify-content: flex-end;
+  align-items: center;
   margin-right: 5%;
 }
 

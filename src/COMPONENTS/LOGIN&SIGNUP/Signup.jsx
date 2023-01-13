@@ -4,22 +4,41 @@ import { Button } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { context } from "../../Context";
+import { toast } from "react-toastify";
 
 export const Signup = () => {
   const [email, setemail] = useState("");
   const [username, setusername] = useState("");
   const [password, setpassword] = useState("");
   const navigate = useNavigate();
-  const { setuser } = useContext(context);
-  const login = async () => {
-    const { data } = await axios.post("http://localhost:5000/signup", {
-      email,
-      password,
-      username,
-    });
-    if (data.success) {
-      setuser(data.user);
-      navigate("/chat");
+  const { setuser, url } = useContext(context);
+  const signupHandler = async () => {
+    try {
+      const { data } = await axios.post(`${url}/signup`, {
+        email,
+        password,
+        username,
+      });
+      if (data.success) {
+        localStorage.setItem("token", data.user.token);
+        setuser(data.user);
+        navigate("/join");
+        return;
+      } else {
+        toast.error(data.message, {
+          theme: "colored",
+          autoClose: 3000,
+          hideProgressBar: true,
+        });
+        return;
+      }
+    } catch (error) {
+      toast.error("Something went wrong", {
+        theme: "colored",
+        hideProgressBar: true,
+        autoClose: 3000,
+        position: "bottom-center",
+      });
     }
   };
   return (
@@ -55,7 +74,9 @@ export const Signup = () => {
         />
       </div>
       <div className="signupDiv">
-        <Button colorScheme="cyan">SIGNUP</Button>
+        <Button colorScheme="cyan" onClick={signupHandler}>
+          SIGNUP
+        </Button>
       </div>
     </div>
   );

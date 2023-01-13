@@ -3,18 +3,22 @@ import { createContext, useState } from "react";
 export const context = createContext({
   user: {},
   setuser: () => {},
-  roomData: {},
-  setroomData: () => {},
+  roomMembers: [],
+  setroomMembers: () => {},
+  url: "",
 });
 
 export const UserContext = (props) => {
-  const [user, setuser] = useState("11");
-  const [roomData, setroomData] = useState("22");
+  const [user, setuser] = useState({});
+  const [roomMembers, setroomMembers] = useState([]);
+  const url = "http://192.168.1.16:5000";
+  // const url = "http://localhost:5000";
   const value = {
     user,
     setuser,
-    roomData,
-    setroomData,
+    roomMembers,
+    setroomMembers,
+    url,
   };
   return <context.Provider value={value}>{props.children}</context.Provider>;
 };

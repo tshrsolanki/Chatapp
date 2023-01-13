@@ -15,7 +15,22 @@
   height: 100%;
   width: 100%;
 }
-
+.msg-grp {
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 270px;
+}
+.span-msg {
+  width: 170px;
+}
+.btn-grp {
+  display: flex;
+  justify-content: space-between;
+  width: 100px;
+  /* margin-left: 20px; */
+}
 /* @media (min-width: 320px) and (max-width: 480px) {
   .outerContainer {
     height: 100%;

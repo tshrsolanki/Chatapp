@@ -87,6 +87,19 @@ export const CreateJoin = () => {
       }
     }
   };
+  const logoutHandler = async () => {
+    const token = localStorage.getItem("token");
+    localStorage.removeItem("token");
+    navigate("/");
+
+    await fetch(`${url}/signout`, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: token,
+      },
+    });
+  };
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!user.email) {
@@ -104,7 +117,7 @@ export const CreateJoin = () => {
     }
     async function fetchData() {
       try {
-        const res = await fetch("http://localhost:5000/tokenlogin", {
+        const res = await fetch(`${url}/tokenlogin`, {
           method: "post",
           headers: {
             "Content-Type": "application/json",
@@ -131,51 +144,58 @@ export const CreateJoin = () => {
     // eslint-disable-next-line
   }, []);
   return (
-    <div className="createJoinOuterContainer">
-      <div className="createJoinInnerContainer">
-        <div>
-          <button
-            className="joinButton"
-            onClick={() => {
-              settemp("JOIN");
-              onOpen();
-            }}
-          >
-            JOIN A ROOM
-          </button>
-        </div>
-        <div>
-          <button
-            className="joinButton"
-            onClick={() => {
-              settemp("CREATE");
-              onOpen();
-            }}
-          >
-            CREATE A ROOM
-          </button>
-        </div>
-        <Modal isCentered isOpen={isOpen} onClose={onClose}>
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>ENTER ROOM NAME</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>
-              <input
-                type="text"
-                className="joinInput"
-                onChange={(e) => setroomName(e.target.value)}
-              />
-            </ModalBody>
-
-            <ModalFooter>
-              <Button colorScheme="blue" mr={3} onClick={handle}>
-                {temp}
-              </Button>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
+    <>
+      <div className="logout-box">
+        <button className="logout-btn" onClick={logoutHandler}>
+          LOGOUT
+        </button>
       </div>
-    </div>
+      <div className="createJoinOuterContainer">
+        <div className="createJoinInnerContainer">
+          <div>
+            <button
+              className="joinButton"
+              onClick={() => {
+                settemp("JOIN");
+                onOpen();
+              }}
+            >
+              JOIN A ROOM
+            </button>
+          </div>
+          <div>
+            <button
+              className="joinButton"
+              onClick={() => {
+                settemp("CREATE");
+                onOpen();
+              }}
+            >
+              CREATE A ROOM
+            </button>
+          </div>
+          <Modal isCentered isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader>ENTER ROOM NAME</ModalHeader>
+              <ModalCloseButton />
+              <ModalBody>
+                <input
+                  type="text"
+                  className="joinInput"
+                  onChange={(e) => setroomName(e.target.value)}
+                />
+              </ModalBody>
+
+              <ModalFooter>
+                <Button colorScheme="blue" mr={3} onClick={handle}>
+                  {temp}
+                </Button>
+              </ModalFooter>
+            </ModalContent>
+          </Modal>
+        </div>
+      </div>
+    </>
   );
 };

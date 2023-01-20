@@ -20,7 +20,7 @@ const Message = ({ message }) => {
           {ReactEmoji.emojify(message.text)}
         </p>
       </div>
-      <p className="sentText pl-10 ">:{message.userData}</p>
+      <p className="sentText pl-3 ">:{message.userData}</p>
     </div>
   );
 
@@ -31,12 +31,12 @@ const Message = ({ message }) => {
           {ReactEmoji.emojify(message.text)}
         </p>
       </div>
-      <p className="sentText pl-10 ">:{message.userData}</p>
+      <p className="sentText pl-3 ">::{message.userData}</p>
     </div>
   );
   const SelfMessage = ({ message }) => (
     <div className="messageContainer justifyEnd">
-      <p className="sentText pr-10">{"You"}:</p>
+      <p className="sentText pr-3">{"You"}::</p>
       <div className="messageBox backgroundBlue">
         <p className="messageText colorWhite">
           {ReactEmoji.emojify(message.text)}

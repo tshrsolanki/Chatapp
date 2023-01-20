@@ -11,7 +11,7 @@ export const context = createContext({
 export const UserContext = (props) => {
   const [user, setuser] = useState({});
   const [roomMembers, setroomMembers] = useState([]);
-  const url = "http://192.168.1.16:5000";
+  const url = "http://192.168.33.51:5000";
   // const url = "http://localhost:5000";
   const value = {
     user,

@@ -101,12 +101,18 @@ const Chat = () => {
   };
   const closeChat = (e) => {
     e.preventDefault();
-    socket.emit("closechat", user, callback);
-    function callback() {
-      localStorage.removeItem("messages");
-      setuser({});
-      setroomMembers([]);
-      navigate("/join");
+    if (
+      window.confirm(
+        "Are you sure to close the chat, this will delete all the messages"
+      )
+    ) {
+      socket.emit("closechat", user, callback);
+      function callback() {
+        localStorage.removeItem("messages");
+        setuser({});
+        setroomMembers([]);
+        navigate("/join");
+      }
     }
   };
 
